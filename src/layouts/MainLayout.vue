@@ -2,26 +2,30 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
+        <q-toolbar-title>
+          Vue Chromecast App
+        </q-toolbar-title>
+
         <q-btn
           flat
           dense
           round
           icon="menu"
           aria-label="Menu"
-          @click="store.toggleLeftDrawer()"
+          @click="store.toggleRightDrawer()"
         />
-
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
+
+      <q-tabs align="left">
+        <q-route-tab to="/sender" label="Sender" />
+        <q-route-tab to="/receiver" label="Receiver" />
+      </q-tabs>
     </q-header>
 
     <q-drawer
-      v-model="leftDrawerOpen"
+      v-model="rightDrawerOpen"
       show-if-above
+      side="right"
       bordered
       content-class="bg-grey-1"
     >
@@ -51,17 +55,20 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getModule } from 'vuex-module-decorators';
 import LayoutStoreModule from './LayoutStoreModule';
+import EssentialLink from '../components/EssentialLink.vue';
 
-@Component
+@Component({
+  components: { EssentialLink }
+})
 export default class MyLayout extends Vue {
   store = getModule(LayoutStoreModule);
 
-  get leftDrawerOpen() {
-    return this.store.leftDrawerOpen;
+  get rightDrawerOpen() {
+    return this.store.rightDrawerOpen;
   }
 
-  set leftDrawerOpen(value: boolean) {
-    this.store.setLeftDrawerOpen(value);
+  set rightDrawerOpen(value: boolean) {
+    this.store.setRightDrawerOpen(value);
   }
 }
 </script>

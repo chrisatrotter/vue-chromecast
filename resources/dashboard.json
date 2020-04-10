@@ -1,0 +1,42 @@
+{
+  "data": {
+    "ListOfDashboards": [
+      {
+        "name": "Calendar Dashboard",
+        "display": true,
+        "dashboard": [
+          {
+            "name": "Chris' calendar",
+            "show": true,
+            "interval": 120,
+            "url": "http://chris-calendar.com"
+          },
+          {
+            "name": "Zahra's calendar",
+            "show": true,
+            "interval": 120,
+            "url": "http://zahras-calendar.com"
+          }
+        ]
+      },
+      {
+        "name": "Todo Dashboard",
+        "display": true,
+        "dashboard": [
+          {
+            "name": "Chris' Todo",
+            "show": true,
+            "interval": 120,
+            "url": "http://chris-todo.com"
+          },
+          {
+            "name": "Zahra's Todo",
+            "show": true,
+            "interval": 120,
+            "url": "http://zahras-todo.com"
+          }
+        ]
+      }
+    ]
+  }
+}
