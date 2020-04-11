@@ -15,9 +15,9 @@
         <th class="text-left"></th>
       </tr>
     </thead>
-    <tbody class="bg-grey-3">
+    <tbody>
       <DashboardItem />
-      <DashboardItem />
+      <EditDashboard />
     </tbody>
     <div class="q-pa-md">
       <q-btn color="primary" :disable="loading" label="Add Dashboard" />
@@ -29,9 +29,22 @@
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import DashboardItem from './DashboardItem.vue';
+import EditDashboard from './EditDashboard.vue';
+import { getModule } from 'vuex-module-decorators';
+import DashboardStoreModule from '../store/modules/dashboard';
 
 @Component({
-  components: { DashboardItem }
+  components: { DashboardItem, EditDashboard }
 })
-export default class Dashboard extends Vue {}
+export default class Dashboard extends Vue {
+  store = getModule(DashboardStoreModule);
+
+  get dashboardEditOpen() {
+    return this.store.editDashboard;
+  }
+
+  set dashboardEditOpen(value: boolean) {
+    this.store.SetDashboardEditing(value);
+  }
+}
 </script>

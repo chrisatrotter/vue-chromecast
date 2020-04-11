@@ -1,8 +1,14 @@
 <template>
   <div class="q-pa-md">
-    <div class="row q-col-gutter-md">
-      <div class="col-4" v-for="n in 5" :key="`md-${n}`">
-        <Dashboard />
+    <div class="q-pa-md">
+      <q-btn color="primary" :disable="loading" label="Add Dashboard" />
+    </div>
+
+    <div class="q-pa-md">
+      <div class="row q-col-gutter-md">
+        <div class="col-4" v-for="n in 5" :key="`md-${n}`">
+          <Dashboard />
+        </div>
       </div>
     </div>
   </div>

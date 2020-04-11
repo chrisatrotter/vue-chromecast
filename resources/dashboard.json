@@ -9,13 +9,17 @@
             "name": "Chris' calendar",
             "show": true,
             "interval": 120,
-            "url": "http://chris-calendar.com"
+            "url": "http://chris-calendar.com",
+            "licenseurl": "https://widevine-proxy.appspot.com/proxy",
+            "drm": "widevine"
           },
           {
             "name": "Zahra's calendar",
             "show": true,
-            "interval": 120,
-            "url": "http://zahras-calendar.com"
+            "interval": 30,
+            "url": "http://zahras-calendar.com",
+            "licenseurl": "https://widevine-proxy.appspot.com/proxy",
+            "drm": "widevine"
           }
         ]
       },
@@ -26,14 +30,40 @@
           {
             "name": "Chris' Todo",
             "show": true,
-            "interval": 120,
-            "url": "http://chris-todo.com"
+            "interval": 60,
+            "url": "http://chris-todo.com",
+            "licenseurl": "https://widevine-proxy.appspot.com/proxy",
+            "drm": "widevine"
+          },
+          {
+            "name": "Zahra's Todo",
+            "show": true,
+            "interval": 90,
+            "url": "http://zahras-todo.com",
+            "licenseurl": "https://widevine-proxy.appspot.com/proxy",
+            "drm": "widevine"
+          }
+        ]
+      },
+      {
+        "name": "Dinner Dashboard",
+        "display": true,
+        "dashboard": [
+          {
+            "name": "Chris' Dinner",
+            "show": true,
+            "interval": 30,
+            "url": "http://chris-dinner.com",
+            "licenseurl": "https://widevine-proxy.appspot.com/proxy",
+            "drm": "widevine"
           },
           {
             "name": "Zahra's Todo",
             "show": true,
             "interval": 120,
-            "url": "http://zahras-todo.com"
+            "url": "http://zahras-dinner.com",
+            "licenseurl": "https://widevine-proxy.appspot.com/proxy",
+            "drm": "widevine"
           }
         ]
       }

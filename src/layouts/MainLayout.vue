@@ -30,10 +30,7 @@
       content-class="bg-grey-1"
     >
       <q-list>
-        <q-item-label
-          header
-          class="text-grey-8"
-        >
+        <q-item-label header class="text-grey-8">
           Essential Links
         </q-item-label>
         <EssentialLink
@@ -54,7 +51,7 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getModule } from 'vuex-module-decorators';
-import LayoutStoreModule from './LayoutStoreModule';
+import LayoutStoreModule from '../store/modules/mainLayout';
 import EssentialLink from '../components/EssentialLink.vue';
 
 @Component({
