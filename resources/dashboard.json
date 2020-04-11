@@ -2,10 +2,12 @@
   "data": {
     "ListOfDashboards": [
       {
+        "id": "501e7ae1-7e6f-b923-3e84-4e946bff31a2",
         "name": "Calendar Dashboard",
         "display": true,
         "dashboard": [
           {
+            "id": "501e7ae1-7e6f-b923-3e84-4e946bff31a8",
             "name": "Chris' calendar",
             "show": true,
             "interval": 120,
@@ -14,6 +16,7 @@
             "drm": "widevine"
           },
           {
+            "id": "501e7ae1-7e6f-b923-3e84-4e946bff31a1",
             "name": "Zahra's calendar",
             "show": true,
             "interval": 30,
@@ -24,10 +27,12 @@
         ]
       },
       {
+        "id": "501e7ae1-7e6f-b923-3e84-4e946bff31a3",
         "name": "Todo Dashboard",
         "display": true,
         "dashboard": [
           {
+            "id": "501e7ae1-7e6f-b923-3e84-4e946bff31a4",
             "name": "Chris' Todo",
             "show": true,
             "interval": 60,
@@ -36,6 +41,7 @@
             "drm": "widevine"
           },
           {
+            "id": "501e7ae1-7e6f-b923-3e84-4e946bff31a5",
             "name": "Zahra's Todo",
             "show": true,
             "interval": 90,
@@ -46,10 +52,12 @@
         ]
       },
       {
+        "id": "501e7ae1-7e6f-b923-3e84-4e946bff31a6",
         "name": "Dinner Dashboard",
         "display": true,
         "dashboard": [
           {
+            "id": "501e7ae1-7e6f-b923-3e84-4e946bff31a7",
             "name": "Chris' Dinner",
             "show": true,
             "interval": 30,
@@ -58,6 +66,7 @@
             "drm": "widevine"
           },
           {
+            "id": "501e7ae1-7e6f-b923-3e84-4e946bff31a9",
             "name": "Zahra's Todo",
             "show": true,
             "interval": 120,
