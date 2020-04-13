@@ -9,20 +9,20 @@
       <div class="text-grey-8 q-gutter-xs">
         <q-btn
           size="12px"
-          v-if="!dashboardEditOpen"
+          v-if="!isEditing"
           flat
           dense
           round
-          @click="store.toggleEditDashboard()"
+          @click="ChromeCastDashboardModule.toggleEditing()"
           icon="keyboard_arrow_left"
         />
         <q-btn
           size="12px"
-          v-if="dashboardEditOpen"
+          v-if="isEditing"
           flat
           dense
           round
-          @click="store.toggleEditDashboard()"
+          @click="ChromeCastDashboardModule.toggleEditing()"
           icon="keyboard_arrow_down"
         />
       </div>
@@ -32,32 +32,25 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { Component, Prop } from 'vue-property-decorator';
-import { getModule } from 'vuex-module-decorators';
-import DashboardStoreModule from '../store/modules/dashboard';
+import { Component } from 'vue-property-decorator';
+import ChromeCastDashboardModule from '../store/modules/ChromeCastDashboard';
 
 @Component({})
 export default class DashboardItem extends Vue {
-  @Prop({ default: true })
-  edit!: boolean;
-
-  @Prop({ default: false })
-  show!: boolean;
-
-  @Prop({ default: 'My Dashboard' })
-  name!: string;
-
-  @Prop({ default: 120 })
-  interval!: number;
-
-  store = getModule(DashboardStoreModule);
-
-  get dashboardEditOpen() {
-    return (this.edit = this.store.editDashboard);
+  get show() {
+    return ChromeCastDashboardModule.show;
   }
 
-  set dashboardEditOpen(value: boolean) {
-    this.store.SetDashboardEditing(value);
+  get isEditing() {
+    return ChromeCastDashboardModule.isEditing;
+  }
+
+  get name() {
+    return ChromeCastDashboardModule.name;
+  }
+
+  get interval() {
+    return ChromeCastDashboardModule.interval;
   }
 }
 </script>

@@ -1,4 +1,10 @@
-import { Action, Module, Mutation, VuexModule } from 'vuex-module-decorators';
+import {
+  Action,
+  Module,
+  Mutation,
+  VuexModule,
+  getModule
+} from 'vuex-module-decorators';
 import Store from '../index';
 
 @Module({
@@ -7,11 +13,11 @@ import Store from '../index';
   namespaced: true,
   store: Store
 })
-export default class LayoutStoreModule extends VuexModule {
+class Layout extends VuexModule {
   public rightDrawerOpen = false;
 
   @Mutation
-  public SET_RIGHT_DRAWER_OPEN(value: boolean) {
+  private SET_RIGHT_DRAWER_OPEN(value: boolean) {
     this.rightDrawerOpen = value;
   }
 
@@ -25,3 +31,5 @@ export default class LayoutStoreModule extends VuexModule {
     this.SET_RIGHT_DRAWER_OPEN(!this.rightDrawerOpen);
   }
 }
+
+export const LayoutModule = getModule(Layout);

@@ -6,7 +6,11 @@
 
     <div class="q-pa-md">
       <div class="row q-col-gutter-md">
-        <div class="col-4" v-for="n in 5" :key="`md-${n}`">
+        <div
+          class="col-4"
+          v-for="dashboard in dashboards"
+          :key="`md-${dashboard.id}`"
+        >
           <Dashboard />
         </div>
       </div>
@@ -18,9 +22,19 @@
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import Dashboard from './Dashboard.vue';
+import DashboardListModule from '../store/modules/DashboardList';
+import { IDashboard } from '../store/models';
 
 @Component({
   components: { Dashboard }
 })
-export default class ListOfDashboard extends Vue {}
+export default class ListOfDashboard extends Vue {
+  get dashboards() {
+    return DashboardListModule.dashboardList;
+  }
+
+  addDashboard() {
+    DashboardListModule.addDashboard({} as IDashboard);
+  }
+}
 </script>

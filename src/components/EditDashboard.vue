@@ -1,17 +1,39 @@
 <template>
-  <td colspan="4" v-if="dashboardEditOpen">
+  <td colspan="4" v-if="isEditing">
     <div class="q-pa-md">
       <div class="q-gutter-y-md">
-        <q-input outlined v-model="name" label="Dashboard Name" />
-        <q-input outlined v-model="url" label="URL" />
+        <q-input
+          outlined
+          @input="$event = updateName($event.target.value)"
+          :value="name()"
+          label="Dashboard Name"
+        />
+        <q-input
+          outlined
+          @input="$event = updateUrl($event.target.value)"
+          :value="url()"
+          label="URL"
+        />
         <q-select
           outlined
-          v-model="interval"
+          @input="$event = updateInterval($event.target.value)"
+          :value="interval()"
           :options="intervalOptions"
           label="Interval (seconds)"
         />
-        <q-input outlined v-model="licenseurl" label="LicenseURL" />
-        <q-select outlined v-model="drm" :options="drmOptions" label="DRM" />
+        <q-input
+          outlined
+          @input="$event = updateLicenseUrl($event.target.value)"
+          :value="licenseurl()"
+          label="LicenseURL"
+        />
+        <q-select
+          outlined
+          @input="$event = updateDRM($event.target.value)"
+          :value="drm()"
+          :options="drmOptions"
+          label="DRM"
+        />
       </div>
     </div>
   </td>
@@ -19,47 +41,61 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { Component, Prop } from 'vue-property-decorator';
-import { getModule } from 'vuex-module-decorators';
-import DashboardStoreModule from '../store/modules/dashboard';
+import { Component } from 'vue-property-decorator';
+import { ChromeCastDashboardModule } from '../store/modules/ChromeCastDashboard';
 
 @Component({})
 export default class EditDashboard extends Vue {
-  store = getModule(DashboardStoreModule);
-
-  @Prop({ default: false })
-  edit!: boolean;
-
-  @Prop({ default: false })
-  show!: boolean;
-
-  @Prop({ default: 'My Dashboard' })
-  name!: string;
-
-  @Prop({ default: 120 })
-  interval!: number;
-
-  @Prop({ default: [30, 60, 120, 240, 300] })
-  intervalOptions!: number[];
-
-  @Prop({ default: 'http://chris-calendar.com' })
-  url!: string;
-
-  @Prop({ default: 'https://widevine-proxy.appspot.com/proxy' })
-  licenseurl!: string;
-
-  @Prop({ default: 'widevine' })
-  drm!: string;
-
-  @Prop({ default: ['something', 'some', 'widevine'] })
-  drmOptions!: string[];
-
-  get dashboardEditOpen() {
-    return this.store.editDashboard;
+  get isEditing() {
+    return ChromeCastDashboardModule.isEditing;
   }
 
-  set dashboardEditOpen(value: boolean) {
-    this.store.SetDashboardEditing(value);
+  get name() {
+    return ChromeCastDashboardModule.name;
+  }
+
+  get interval() {
+    return ChromeCastDashboardModule.interval;
+  }
+
+  get intervalOptions() {
+    return ChromeCastDashboardModule.intervalOptions;
+  }
+
+  get url() {
+    return ChromeCastDashboardModule.url;
+  }
+
+  get licenseurl() {
+    return ChromeCastDashboardModule.licenseurl;
+  }
+
+  get drm() {
+    return ChromeCastDashboardModule.drm;
+  }
+
+  get drmOptions() {
+    return ChromeCastDashboardModule.drmOptions;
+  }
+
+  set updateName(value: string) {
+    ChromeCastDashboardModule.setName(value);
+  }
+
+  set updateInterval(value: number) {
+    ChromeCastDashboardModule.setInterval(value);
+  }
+
+  set updateUrl(value: string) {
+    ChromeCastDashboardModule.setUrl(value);
+  }
+
+  set updateLicenseUrl(value: string) {
+    ChromeCastDashboardModule.setLicenseUrl(value);
+  }
+
+  set updateDRM(value: string) {
+    ChromeCastDashboardModule.setDRM(value);
   }
 }
 </script>

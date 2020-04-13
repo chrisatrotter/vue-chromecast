@@ -4,7 +4,7 @@
       <tr>
         <th colspan="5">
           <div class="row no-wrap items-center">
-            <div class="text-h4 q-ml-md text-white">Dashboard Name</div>
+            <div class="text-h4 q-ml-md text-white">{{ name }}</div>
           </div>
         </th>
       </tr>
@@ -30,21 +30,19 @@ import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import DashboardItem from './DashboardItem.vue';
 import EditDashboard from './EditDashboard.vue';
-import { getModule } from 'vuex-module-decorators';
-import DashboardStoreModule from '../store/modules/dashboard';
+import DashboardModule from '../store/modules/Dashboard';
+import { IChromeCastDashboard } from '../store/models';
 
 @Component({
   components: { DashboardItem, EditDashboard }
 })
 export default class Dashboard extends Vue {
-  store = getModule(DashboardStoreModule);
-
-  get dashboardEditOpen() {
-    return this.store.editDashboard;
+  get name() {
+    return DashboardModule.name;
   }
 
-  set dashboardEditOpen(value: boolean) {
-    this.store.SetDashboardEditing(value);
+  set addDashboard(dashboard: IChromeCastDashboard) {
+    DashboardModule.addDashboard(dashboard);
   }
 }
 </script>

@@ -50,22 +50,19 @@
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { getModule } from 'vuex-module-decorators';
-import LayoutStoreModule from '../store/modules/mainLayout';
+import { LayoutModule } from '../store/modules/MainLayout';
 import EssentialLink from '../components/EssentialLink.vue';
 
 @Component({
   components: { EssentialLink }
 })
 export default class MyLayout extends Vue {
-  store = getModule(LayoutStoreModule);
-
   get rightDrawerOpen() {
-    return this.store.rightDrawerOpen;
+    return LayoutModule.rightDrawerOpen;
   }
 
   set rightDrawerOpen(value: boolean) {
-    this.store.setRightDrawerOpen(value);
+    LayoutModule.setRightDrawerOpen(value);
   }
 }
 </script>

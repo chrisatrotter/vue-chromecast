@@ -1,5 +1,13 @@
-import { Action, Module, Mutation, VuexModule } from 'vuex-module-decorators';
+import {
+  Action,
+  Module,
+  Mutation,
+  VuexModule,
+  getModule
+} from 'vuex-module-decorators';
 import Store from '../index';
+import { uid } from 'quasar';
+import { IDashboard, IChromeCastDashboard } from '../models';
 
 @Module({
   dynamic: true,
@@ -7,21 +15,71 @@ import Store from '../index';
   namespaced: true,
   store: Store
 })
-export default class DashboardStoreModule extends VuexModule {
-  public editDashboard = false;
+class DashboardModule extends VuexModule implements IDashboard {
+  public id: string = '';
+  public name: string = '';
+  public display: boolean = false;
+  public dashboard: IChromeCastDashboard[] = [];
 
   @Mutation
-  public SET_DASHBOARD_EDITING(value: boolean) {
-    this.editDashboard = value;
+  private SET_ID() {
+    this.id = uid();
+  }
+
+  @Mutation
+  private SET_NAME(name: string) {
+    this.name = name;
+  }
+
+  @Mutation
+  private SET_DISPLAY(display: boolean) {
+    this.display = display;
+  }
+
+  @Mutation
+  public ADD_DASHBOARD(dashboard: IChromeCastDashboard) {
+    this.dashboard.push(dashboard);
+  }
+
+  @Mutation
+  private REMOVE_DASHBOARD(dashboard: IChromeCastDashboard) {
+    this.dashboard = this.dashboard.filter(
+      (value: IChromeCastDashboard) => value.id != dashboard.id
+    );
   }
 
   @Action
-  public SetDashboardEditing(value: boolean) {
-    this.SET_DASHBOARD_EDITING(value);
+  public setId() {
+    this.SET_ID();
   }
 
   @Action
-  public toggleEditDashboard() {
-    this.SET_DASHBOARD_EDITING(!this.editDashboard);
+  public setName(value: string) {
+    this.SET_NAME(value);
+  }
+
+  @Action
+  public setDisplay(value: boolean) {
+    this.SET_DISPLAY(value);
+  }
+
+  @Action
+  public toggleDisplay() {
+    this.SET_DISPLAY(!this.display);
+  }
+
+  @Action
+  public getChromeCastDashboardInformation() {}
+
+  @Action
+  public addDashboard(dashboard: IChromeCastDashboard) {
+    this.ADD_DASHBOARD(dashboard);
+  }
+
+  @Action
+  public removeDashboard(dashboard: IChromeCastDashboard) {
+    this.REMOVE_DASHBOARD(dashboard);
   }
 }
+
+export default getModule(DashboardModule);
