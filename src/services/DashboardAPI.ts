@@ -1,9 +1,17 @@
-import axios from 'axios';
+import axios, { AxiosPromise } from 'axios';
+import { IDashboard } from 'src/store/models';
 
-const dashboardData = require('../../resources/dashboard.json');
-
-class DashboardAPI {
-  getDashboard() {
-    return JSON.parse(dashboardData);
+const apiClient = axios.create({
+  baseURL: 'http://localhost:3000',
+  withCredentials: false, // This is the default
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
   }
-}
+});
+
+export default {
+  getDashboardList(): AxiosPromise<IDashboard[]> {
+    return apiClient.get('/dashboardList');
+  }
+};

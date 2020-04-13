@@ -1,8 +1,8 @@
 import { IDashboardList, IDashboard } from './models';
 
-var dashboardJSON = require('resources/dashboard.json');
+var dashboardJSON = require('../../resources/dashboard.json');
 
-export async function fetchDashboardList() {
+export function fetchDashboardList(): IDashboard[] {
   const response = dashboardJSON;
-  return response.dashboardList as IDashboard[];
+  return response.dashboardList;
 }

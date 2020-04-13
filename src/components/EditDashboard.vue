@@ -5,32 +5,32 @@
         <q-input
           outlined
           @input="$event = updateName($event.target.value)"
-          :value="name()"
+          v-model="name"
           label="Dashboard Name"
         />
         <q-input
           outlined
           @input="$event = updateUrl($event.target.value)"
-          :value="url()"
+          v-model="url"
           label="URL"
         />
         <q-select
           outlined
           @input="$event = updateInterval($event.target.value)"
-          :value="interval()"
+          v-model="interval"
           :options="intervalOptions"
           label="Interval (seconds)"
         />
         <q-input
           outlined
           @input="$event = updateLicenseUrl($event.target.value)"
-          :value="licenseurl()"
+          v-model="licenseurl"
           label="LicenseURL"
         />
         <q-select
           outlined
           @input="$event = updateDRM($event.target.value)"
-          :value="drm()"
+          v-model="drm"
           :options="drmOptions"
           label="DRM"
         />
@@ -42,59 +42,68 @@
 <script lang="ts">
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
-import { ChromeCastDashboardModule } from '../store/modules/ChromeCastDashboard';
+import ChromeCastDashboardModule from '../store/modules/ChromeCastDashboard';
 
 @Component({})
 export default class EditDashboard extends Vue {
+  editing: boolean = false;
+  name: string = '';
+  interval: number = 0;
+  intervalOptions: number[] = [30, 60, 120];
+  url: string = '';
+  licenseurl: string = '';
+  drm: string = '';
+  drmOptions: string[] = ['something', 'some', 'heey'];
+
   get isEditing() {
-    return ChromeCastDashboardModule.isEditing;
+    return (this.editing = ChromeCastDashboardModule.isEditing);
   }
 
-  get name() {
-    return ChromeCastDashboardModule.name;
+  get getName() {
+    return (this.name = ChromeCastDashboardModule.name);
   }
 
-  get interval() {
-    return ChromeCastDashboardModule.interval;
+  get getInterval() {
+    return (this.interval = ChromeCastDashboardModule.interval);
   }
 
-  get intervalOptions() {
-    return ChromeCastDashboardModule.intervalOptions;
+  get getIntervalOptions() {
+    return (this.intervalOptions = ChromeCastDashboardModule.intervalOptions);
   }
 
-  get url() {
-    return ChromeCastDashboardModule.url;
+  get getUrl() {
+    return (this.url = ChromeCastDashboardModule.url);
   }
 
-  get licenseurl() {
-    return ChromeCastDashboardModule.licenseurl;
+  get getLicenseurl() {
+    return (this.licenseurl = ChromeCastDashboardModule.licenseurl);
   }
 
-  get drm() {
-    return ChromeCastDashboardModule.drm;
+  get getDRM() {
+    return (this.drm = ChromeCastDashboardModule.drm);
   }
 
-  get drmOptions() {
-    return ChromeCastDashboardModule.drmOptions;
+  get getDRMOptions() {
+    return (this.drmOptions = ChromeCastDashboardModule.drmOptions);
   }
 
-  set updateName(value: string) {
+  set UpdateName(value: string) {
     ChromeCastDashboardModule.setName(value);
   }
 
-  set updateInterval(value: number) {
+  set UpdateInterval(value: number) {
     ChromeCastDashboardModule.setInterval(value);
   }
 
-  set updateUrl(value: string) {
+  set UpdateUrl(value: string) {
     ChromeCastDashboardModule.setUrl(value);
   }
 
-  set updateLicenseUrl(value: string) {
+  set UpdateLicenseUrl(value: string) {
     ChromeCastDashboardModule.setLicenseUrl(value);
   }
 
-  set updateDRM(value: string) {
+  set UpdateDRM(value: string) {
     ChromeCastDashboardModule.setDRM(value);
   }
 }

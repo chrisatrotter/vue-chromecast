@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-md">
     <div class="q-pa-md">
-      <q-btn color="primary" :disable="loading" label="Add Dashboard" />
+      <q-btn color="primary" @click="addDashboard()" label="Add Dashboard" />
     </div>
 
     <div class="q-pa-md">
@@ -29,12 +29,25 @@ import { IDashboard } from '../store/models';
   components: { Dashboard }
 })
 export default class ListOfDashboard extends Vue {
+  num: number = 1;
+
+  public async created() {
+    await DashboardListModule.loadDashboards();
+    this.dashboards;
+  }
+
   get dashboards() {
     return DashboardListModule.dashboardList;
   }
 
   addDashboard() {
-    DashboardListModule.addDashboard({} as IDashboard);
+    const dashboard: IDashboard = {
+      id: (this.num++).toString(),
+      name: 'a dashboard name',
+      display: false,
+      dashboard: []
+    };
+    DashboardListModule.addDashboard(dashboard);
   }
 }
 </script>

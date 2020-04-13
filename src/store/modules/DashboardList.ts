@@ -3,12 +3,12 @@ import {
   Module,
   Mutation,
   VuexModule,
-  getModule,
-  MutationAction
+  getModule
 } from 'vuex-module-decorators';
 import Store from '../index';
 import { IDashboardList, IDashboard } from '../models';
-import { fetchDashboardList } from '../api';
+import DashboardService from '../../services/DashboardAPI';
+import { AxiosResponse } from 'axios';
 
 var dashboardJSON = require('../../../resources/dashboard.json');
 
@@ -20,11 +20,6 @@ var dashboardJSON = require('../../../resources/dashboard.json');
 })
 class DashboardListModule extends VuexModule implements IDashboardList {
   public dashboardList: IDashboard[] = [];
-
-  getDashboardList() {
-    const dashboardList = fetchDashboardList();
-    return { dashboardList };
-  }
 
   @Mutation
   private ADD_DASHBOARD(dashboard: IDashboard) {
@@ -39,9 +34,8 @@ class DashboardListModule extends VuexModule implements IDashboardList {
   }
 
   @Mutation
-  private GET_DUMMY_DASHBOARD_INFORMATION(dashboards: IDashboard[]) {
+  private SET_DASHBOARDS(dashboards: IDashboard[]) {
     this.dashboardList = dashboards;
-    console.log(dashboards);
   }
 
   @Action
@@ -55,8 +49,16 @@ class DashboardListModule extends VuexModule implements IDashboardList {
   }
 
   @Action
-  public getDummyDashboardInformation() {
-    this.GET_DUMMY_DASHBOARD_INFORMATION(JSON.parse(dashboardJSON).data);
+  public async loadDashboards() {
+    const {
+      data
+    }: AxiosResponse<IDashboard[]> = await DashboardService.getDashboardList();
+    console.log('what is data? ' + data[0]);
+    const dashboards: IDashboard[] = data;
+
+    console.log('what is dashboard: ' + dashboards);
+
+    if (dashboards != undefined) this.SET_DASHBOARDS(dashboards);
   }
 }
 

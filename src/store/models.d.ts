@@ -2,11 +2,11 @@ export interface IDashboard {
   id: string;
   name: string;
   display: boolean;
-  dashboard?: IChromeCastDashboard[] | [];
+  dashboard?: IChromeCastDashboard[];
 }
 
 export interface IDashboardList {
-  dashboardList?: IDashboard[] | [];
+  dashboardList?: IDashboard[];
 }
 
 export interface IChromeCastDashboard {
