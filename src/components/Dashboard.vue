@@ -4,7 +4,7 @@
       <tr>
         <th colspan="5">
           <div class="row no-wrap items-center">
-            <div class="text-h4 q-ml-md text-white">{{ name }}</div>
+            <div class="text-h4 q-ml-md text-white">{{ dashboard.name }}</div>
           </div>
         </th>
       </tr>
@@ -15,9 +15,9 @@
         <th class="text-left"></th>
       </tr>
     </thead>
-    <tbody v-for="dashboard in dashboards" :key="`md-${dashboard.id}`">
-      <DashboardItem />
-      <EditDashboard />
+    <tbody v-for="item in dashboard.dashboard" :key="`md-${item.id}`">
+      <DashboardItem :dashboard="item" />
+      <EditDashboard :dashboard="item" />
     </tbody>
     <div class="q-pa-md">
       <q-btn
@@ -42,6 +42,9 @@ import { IChromeCastDashboard, IDashboard } from '../store/models';
   components: { DashboardItem, EditDashboard }
 })
 export default class Dashboard extends Vue {
+  @Prop({ required: true, default: null })
+  dashboard!: IDashboard;
+
   public created() {}
 
   get name() {

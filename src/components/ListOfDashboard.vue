@@ -11,7 +11,7 @@
           v-for="dashboard in dashboards"
           :key="`md-${dashboard.id}`"
         >
-          <Dashboard />
+          <Dashboard :dashboard="dashboard" />
         </div>
       </div>
     </div>
@@ -33,7 +33,6 @@ export default class ListOfDashboard extends Vue {
 
   public async created() {
     await DashboardListModule.loadDashboards();
-    this.dashboards;
   }
 
   get dashboards() {
