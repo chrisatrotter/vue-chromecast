@@ -7,7 +7,7 @@ import {
 } from 'vuex-module-decorators';
 import Store from '../index';
 import { uid } from 'quasar';
-import { IDashboard, IChromeCastDashboard } from '../models';
+import { Dashboard, ChromeCastDashboard } from '../models';
 
 @Module({
   dynamic: true,
@@ -15,37 +15,50 @@ import { IDashboard, IChromeCastDashboard } from '../models';
   namespaced: true,
   store: Store
 })
-class DashboardModule extends VuexModule implements IDashboard {
-  public id: string = '';
-  public name: string = '';
-  public display: boolean = false;
-  public dashboard: IChromeCastDashboard[] = [];
+class DashboardModule extends VuexModule {
+  public chromeCastDashboard: ChromeCastDashboard[] = [];
+  public dashboard: Dashboard = {
+    id: '',
+    name: '',
+    display: false,
+    chromeCastDashboard: this.chromeCastDashboard
+  };
 
   @Mutation
   private SET_ID() {
-    this.id = uid();
+    this.dashboard.id = uid();
   }
 
   @Mutation
   private SET_NAME(name: string) {
-    this.name = name;
+    this.dashboard.name = name;
   }
 
   @Mutation
   private SET_DISPLAY(display: boolean) {
-    this.display = display;
+    this.dashboard.display = display;
   }
 
   @Mutation
-  public ADD_DASHBOARD(dashboard: IChromeCastDashboard) {
-    this.dashboard.push(dashboard);
+  private SET_DASHBOARD(dashboard: Dashboard) {
+    this.dashboard = dashboard;
   }
 
   @Mutation
-  private REMOVE_DASHBOARD(dashboard: IChromeCastDashboard) {
-    this.dashboard = this.dashboard.filter(
-      (value: IChromeCastDashboard) => value.id != dashboard.id
+  public ADD_DASHBOARD(chromeCastDashboard: ChromeCastDashboard) {
+    this.chromeCastDashboard.push(chromeCastDashboard);
+  }
+
+  @Mutation
+  private REMOVE_DASHBOARD(chromeCastDashboards: ChromeCastDashboard) {
+    this.chromeCastDashboard = this.chromeCastDashboard.filter(
+      (value: ChromeCastDashboard) => value.id != chromeCastDashboards.id
     );
+  }
+
+  @Action
+  public setDashboard(dashboard: Dashboard) {
+    this.SET_DASHBOARD(dashboard);
   }
 
   @Action
@@ -65,20 +78,20 @@ class DashboardModule extends VuexModule implements IDashboard {
 
   @Action
   public toggleDisplay() {
-    this.SET_DISPLAY(!this.display);
+    this.SET_DISPLAY(!this.dashboard.display);
   }
 
   @Action
   public getChromeCastDashboardInformation() {}
 
   @Action
-  public addDashboard(dashboard: IChromeCastDashboard) {
-    this.ADD_DASHBOARD(dashboard);
+  public addDashboard(chromeDashboard: ChromeCastDashboard) {
+    this.ADD_DASHBOARD(chromeDashboard);
   }
 
   @Action
-  public removeDashboard(dashboard: IChromeCastDashboard) {
-    this.REMOVE_DASHBOARD(dashboard);
+  public removeDashboard(chromeDashboard: ChromeCastDashboard) {
+    this.REMOVE_DASHBOARD(chromeDashboard);
   }
 }
 

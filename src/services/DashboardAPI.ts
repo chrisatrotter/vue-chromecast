@@ -1,5 +1,5 @@
 import axios, { AxiosPromise } from 'axios';
-import { IDashboard } from 'src/store/models';
+import { Dashboard } from 'src/store/models';
 
 const apiClient = axios.create({
   baseURL: 'http://localhost:3000',
@@ -11,7 +11,7 @@ const apiClient = axios.create({
 });
 
 export default {
-  getDashboardList(): AxiosPromise<IDashboard[]> {
+  getDashboardList(): AxiosPromise<Dashboard[]> {
     return apiClient.get('/dashboardList');
   }
 };

@@ -6,13 +6,11 @@
 
     <div class="q-pa-md">
       <div class="row q-col-gutter-md">
-        <div
-          class="col-4"
+        <SenderDashboard
           v-for="dashboard in dashboards"
+          v-bind="dashboard"
           :key="`md-${dashboard.id}`"
-        >
-          <Dashboard :dashboard="dashboard" />
-        </div>
+        />
       </div>
     </div>
   </div>
@@ -21,16 +19,15 @@
 <script lang="ts">
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
-import Dashboard from './Dashboard.vue';
+import SenderDashboard from './Dashboard.vue';
 import DashboardListModule from '../store/modules/DashboardList';
-import { IDashboard } from '../store/models';
+import { Dashboard } from '../store/models';
+import { uid } from 'quasar';
 
 @Component({
-  components: { Dashboard }
+  components: { SenderDashboard }
 })
 export default class ListOfDashboard extends Vue {
-  num: number = 1;
-
   public async created() {
     await DashboardListModule.loadDashboards();
   }
@@ -40,11 +37,10 @@ export default class ListOfDashboard extends Vue {
   }
 
   addDashboard() {
-    const dashboard: IDashboard = {
-      id: (this.num++).toString(),
-      name: 'a dashboard name',
-      display: false,
-      dashboard: []
+    const dashboard: Dashboard = {
+      id: uid(),
+      name: 'dashboard name',
+      display: false
     };
     DashboardListModule.addDashboard(dashboard);
   }

@@ -1,15 +1,15 @@
-export interface IDashboard {
+export interface Dashboard {
   id: string;
   name: string;
   display: boolean;
-  dashboard?: IChromeCastDashboard[];
+  chromeCastDashboard?: ChromeCastDashboard[];
 }
 
-export interface IDashboardList {
-  dashboardList?: IDashboard[];
+export interface DashboardList {
+  dashboardList?: Dashboard[];
 }
 
-export interface IChromeCastDashboard {
+export interface ChromeCastDashboard {
   id: string;
   name: string;
   show: boolean;

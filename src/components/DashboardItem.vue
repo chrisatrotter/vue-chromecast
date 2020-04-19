@@ -34,11 +34,11 @@
 import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
 import ChromeCastDashboardModule from '../store/modules/ChromeCastDashboard';
-import { IChromeCastDashboard } from '../store/models';
+import { ChromeCastDashboard } from '../store/models';
 
 @Component({})
 export default class DashboardItem extends Vue {
   @Prop({ required: true, default: null })
-  dashboard!: IChromeCastDashboard;
+  dashboard!: ChromeCastDashboard;
 }
 </script>

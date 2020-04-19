@@ -6,11 +6,9 @@ import {
   getModule
 } from 'vuex-module-decorators';
 import Store from '../index';
-import { IDashboardList, IDashboard } from '../models';
+import { DashboardList, Dashboard } from '../models';
 import DashboardService from '../../services/DashboardAPI';
 import { AxiosResponse } from 'axios';
-
-var dashboardJSON = require('../../../resources/dashboard.json');
 
 @Module({
   dynamic: true,
@@ -18,43 +16,55 @@ var dashboardJSON = require('../../../resources/dashboard.json');
   namespaced: true,
   store: Store
 })
-class DashboardListModule extends VuexModule implements IDashboardList {
-  public dashboardList: IDashboard[] = [];
+class DashboardListModule extends VuexModule implements DashboardList {
+  public dashboardList: Dashboard[] = [];
 
   @Mutation
-  private ADD_DASHBOARD(dashboard: IDashboard) {
+  private ADD_DASHBOARD(dashboard: Dashboard) {
     this.dashboardList.push(dashboard);
   }
 
   @Mutation
-  private REMOVE_DASHBOARD(dashboard: IDashboard) {
+  private REMOVE_DASHBOARD(dashboard: Dashboard) {
     this.dashboardList = this.dashboardList.filter(
-      (value: IDashboard) => value.id != dashboard.id
+      (value: Dashboard) => value.id != dashboard.id
     );
   }
 
   @Mutation
-  private SET_DASHBOARDS(dashboards: IDashboard[]) {
+  private SET_DASHBOARDS(dashboards: Dashboard[]) {
     this.dashboardList = dashboards;
   }
 
+  @Mutation
+  private GET_DASHBOARD(id: string) {
+    this.dashboardList.find((dashboard: Dashboard) =>
+      dashboard.id.localeCompare(id)
+    );
+  }
+
   @Action
-  public addDashboard(dashboard: IDashboard) {
+  public addDashboard(dashboard: Dashboard) {
     this.ADD_DASHBOARD(dashboard);
   }
 
   @Action
-  public removeDashboard(dashboard: IDashboard) {
+  public removeDashboard(dashboard: Dashboard) {
     this.REMOVE_DASHBOARD(dashboard);
+  }
+
+  @Action
+  public getDashboard(id: string) {
+    this.GET_DASHBOARD(id);
   }
 
   @Action
   public async loadDashboards() {
     const {
       data
-    }: AxiosResponse<IDashboard[]> = await DashboardService.getDashboardList();
+    }: AxiosResponse<Dashboard[]> = await DashboardService.getDashboardList();
     console.log('what is data? ' + data[0]);
-    const dashboards: IDashboard[] = data;
+    const dashboards: Dashboard[] = data;
 
     console.log('what is dashboard: ' + dashboards);
 

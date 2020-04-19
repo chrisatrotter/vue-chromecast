@@ -11,12 +11,7 @@
           label="Interval (seconds)"
         />
         <q-input outlined v-model="dashboard.licenseurl" label="LicenseURL" />
-        <q-select
-          outlined
-          v-model="dashboard.drm"
-          :options="dashboard.drmOptions"
-          label="DRM"
-        />
+        <q-select outlined v-model="dashboard.drm" :options="dashboard.drmOptions" label="DRM" />
       </div>
     </div>
   </td>
@@ -26,11 +21,11 @@
 import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
 import ChromeCastDashboardModule from '../store/modules/ChromeCastDashboard';
-import { IChromeCastDashboard } from '../store/models';
+import { ChromeCastDashboard } from '../store/models';
 
 @Component({})
 export default class EditDashboard extends Vue {
   @Prop({ required: true, default: null })
-  dashboard!: IChromeCastDashboard;
+  dashboard!: ChromeCastDashboard;
 }
 </script>

@@ -7,7 +7,7 @@ import {
 } from 'vuex-module-decorators';
 import Store from '../index';
 import { uid } from 'quasar';
-import { IChromeCastDashboard } from '../models';
+import { ChromeCastDashboard } from '../models';
 
 @Module({
   dynamic: true,
@@ -16,7 +16,7 @@ import { IChromeCastDashboard } from '../models';
   store: Store
 })
 class ChromeCastDashboardModule extends VuexModule
-  implements IChromeCastDashboard {
+  implements ChromeCastDashboard {
   public id: string = '';
   public name: string = '';
   public show: boolean = false;
