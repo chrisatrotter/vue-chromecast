@@ -9,7 +9,10 @@
     "harnesses": [
       "unit-jest",
       "e2e-cypress",
-      "security"
+      "e2e-webdriver",
+      "quality",
+      "security",
+      "security-antivuln"
     ]
   },
   "@quasar/testing-unit-jest": {
@@ -20,7 +23,15 @@
     "options": []
   },
   "@quasar/testing-security": {
-    "options": [],
+    "options": [
+      "zap_local"
+    ],
     "zapbrowser": "Chrome"
-  }
+  },
+  "@quasar/testing-quality": {
+    "options": [
+      "scripts"
+    ]
+  },
+  "@quasar/testing-security-antivuln": {}
 }

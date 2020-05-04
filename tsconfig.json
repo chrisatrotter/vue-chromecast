@@ -1,16 +1,26 @@
 {
   "compilerOptions": {
-    "allowJs": true,
     "sourceMap": true,
-    "target": "es6",
-    "strict": true,
-    "experimentalDecorators": true,
+    "target": "esnext",
     "module": "esnext",
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "noImplicitThis": true,
+    "extendedDiagnostics": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "baseUrl": ".",
-    "types": [
-      "quasar"
-    ]
+    "types": ["quasar"],
+    "allowJs": true,
+    "checkJs": true
   },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
+  ],
   "exclude": ["node_modules"]
 }

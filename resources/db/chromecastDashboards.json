@@ -1,0 +1,64 @@
+{
+  "chromeCastDashboards": [
+    {
+      "id": "501e7ae1-7htf-b923-3e84-4g946bff31a8",
+      "dashboardCollectionId": "501e7ae1-7e6f-ht23-3e84-4e946bas31a2",
+      "name": "Chris' calendar",
+      "show": true,
+      "interval": 120,
+      "url": "http://chris-calendar.com",
+      "licenseurl": "https://widevine-proxy.appspot.com/proxy",
+      "drm": "widevine"
+    },
+    {
+      "id": "501e7ae1-456f-b923-3e84-4e946gdf31a1",
+      "dashboardCollectionId": "501e7ae1-7e6f-ht23-3e84-4e946bas31a2",
+      "name": "Zahra's calendar",
+      "show": true,
+      "interval": 30,
+      "url": "http://zahras-calendar.com",
+      "licenseurl": "https://widevine-proxy.appspot.com/proxy",
+      "drm": "widevine"
+    },
+    {
+      "id": "501e53e1-7e6f-b923-3e84-4e946bff31a4",
+      "dashboardCollectionId": "501e7ae1-gd6f-b923-3e84-4e946bff31a3",
+      "name": "Chris' Todo",
+      "show": true,
+      "interval": 60,
+      "url": "http://chris-todo.com",
+      "licenseurl": "https://widevine-proxy.appspot.com/proxy",
+      "drm": "widevine"
+    },
+    {
+      "id": "501dfae1-7e6f-b923-3e84-4e946bff31a5",
+      "dashboardCollectionId": "501e7ae1-gd6f-b923-3e84-4e946bff31a3",
+      "name": "Zahra's Todo",
+      "show": true,
+      "interval": 90,
+      "url": "http://zahras-todo.com",
+      "licenseurl": "https://widevine-proxy.appspot.com/proxy",
+      "drm": "widevine"
+    },
+    {
+      "id": "501e76e1-7e6f-b923-3e84-4e946bff31a7",
+      "dashboardCollectionId": "50537ae1-7e6f-b923-3e84-4e946bff31a6",
+      "name": "Chris' Dinner",
+      "show": true,
+      "interval": 30,
+      "url": "http://chris-dinner.com",
+      "licenseurl": "https://widevine-proxy.appspot.com/proxy",
+      "drm": "widevine"
+    },
+    {
+      "id": "5237ae1-7e6f-b923-3e84-4e946bff31a9",
+      "dashboardCollectionId": "50537ae1-7e6f-b923-3e84-4e946bff31a6",
+      "name": "Zahra's Dinner",
+      "show": true,
+      "interval": 120,
+      "url": "http://zahras-dinner.com",
+      "licenseurl": "https://widevine-proxy.appspot.com/proxy",
+      "drm": "widevine"
+    }
+  ]
+}

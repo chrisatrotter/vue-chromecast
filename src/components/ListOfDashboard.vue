@@ -7,9 +7,9 @@
     <div class="q-pa-md">
       <div class="row q-col-gutter-md">
         <SenderDashboard
-          v-for="dashboard in dashboards"
-          v-bind="dashboard"
-          :key="`md-${dashboard.id}`"
+          v-for="dashboard in dashboardCollections"
+          v-bind:dashboardCollectionId="dashboard.id"
+          v-bind:key="dashboard.id"
         />
       </div>
     </div>
@@ -19,30 +19,27 @@
 <script lang="ts">
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
-import SenderDashboard from './Dashboard.vue';
-import DashboardListModule from '../store/modules/DashboardList';
-import { Dashboard } from '../store/models';
-import { uid } from 'quasar';
+import SenderDashboard from './SenderDashboard.vue';
+import DashboardCollectionsModule from '../store/modules/DashboardCollections';
+import DashboardCollection from '../model/DashboardCollection';
 
 @Component({
   components: { SenderDashboard }
 })
 export default class ListOfDashboard extends Vue {
   public async created() {
-    await DashboardListModule.loadDashboards();
+    await DashboardCollectionsModule.loadDashboardCollections();
+    await DashboardCollectionsModule.loadChromecastDashboards();
   }
 
-  get dashboards() {
-    return DashboardListModule.dashboardList;
+  get dashboardCollections(): DashboardCollection[] {
+    return DashboardCollectionsModule.dashboardCollections;
   }
 
   addDashboard() {
-    const dashboard: Dashboard = {
-      id: uid(),
-      name: 'dashboard name',
-      display: false
-    };
-    DashboardListModule.addDashboard(dashboard);
+    DashboardCollectionsModule.addDashboardCollection(
+      new DashboardCollection()
+    );
   }
 }
 </script>

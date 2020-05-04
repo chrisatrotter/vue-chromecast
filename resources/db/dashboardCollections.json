@@ -1,0 +1,31 @@
+{
+  "dashboardCollections": [
+    {
+      "id": "501e7ae1-7e6f-ht23-3e84-4e946bas31a2",
+      "name": "Calendar Dashboard",
+      "display": true,
+      "chromeCastDashboards": [
+        "501e7ae1-7htf-b923-3e84-4g946bff31a8",
+        "501e7ae1-456f-b923-3e84-4e946gdf31a1"
+      ]
+    },
+    {
+      "id": "501e7ae1-gd6f-b923-3e84-4e946bff31a3",
+      "name": "Todo Dashboard",
+      "display": true,
+      "chromeCastDashboards": [
+        "501e53e1-7e6f-b923-3e84-4e946bff31a4",
+        "501dfae1-7e6f-b923-3e84-4e946bff31a5"
+      ]
+    },
+    {
+      "id": "50537ae1-7e6f-b923-3e84-4e946bff31a6",
+      "name": "Dinner Dashboard",
+      "display": true,
+      "chromeCastDashboards": [
+        "501e76e1-7e6f-b923-3e84-4e946bff31a7",
+        "5237ae1-7e6f-b923-3e84-4e946bff31a9"
+      ]
+    }
+  ]
+}
