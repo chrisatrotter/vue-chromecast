@@ -23,6 +23,7 @@ class ChromecastDashboardModule extends VuexModule {
   private SET_CHROMECAST_DASHBOARDS(
     chromecastDashboards: ChromecastDashboard[]
   ) {
+    this.chromecastDashboards = [];
     chromecastDashboards.forEach((chromecastDashboard: ChromecastDashboard) =>
       this.chromecastDashboards.push(
         new ChromecastDashboard(

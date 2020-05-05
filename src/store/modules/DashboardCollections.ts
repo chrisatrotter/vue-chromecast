@@ -21,9 +21,6 @@ class DashboardCollectionModule extends VuexModule {
 
   @Mutation
   private SET_DASHBOARD_COLLECTIONS(dashboards: DashboardCollection[]) {
-    dashboards.forEach((dashboard: DashboardCollection) =>
-      this.dashboardCollections.push(new DashboardCollection(dashboard))
-    );
     this.dashboardCollections = dashboards;
   }
 
