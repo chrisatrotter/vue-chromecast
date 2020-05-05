@@ -89,6 +89,19 @@
       "url": "http://zahras-dinner.com",
       "licenseurl": "https://widevine-proxy.appspot.com/proxy",
       "drm": "widevine"
+    },
+    {
+      "id": "a7cb6eb3-9c60-4890-964f-32ebd8613538",
+      "dashboardCollectionId": "501e7ae1-7e6f-ht23-3e84-4e946bas31a2",
+      "name": "Marius' calendar",
+      "show": false,
+      "interval": 120,
+      "intervalOptions": [30, 60, 90, 120],
+      "url": "http://marius-calendar.com",
+      "licenseurl": "https://widevine-proxy.appspot.com/proxy",
+      "drm": "widewine",
+      "drmOptions": [],
+      "isEditing": true
     }
   ]
 }

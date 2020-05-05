@@ -17,6 +17,8 @@
           :options="chromeCastDashboard.drmOptions"
           label="DRM"
         />
+        <q-btn color="secondary" @click="updateChromeCastDashboard()" label="Update" />
+        <q-btn flat round color="red" @click="deleteChromeCastDashboard()" icon="delete" />
       </div>
     </div>
   </td>
@@ -26,6 +28,7 @@
 import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
 import DashboardCollectionsModule from '../store/modules/DashboardCollections';
+import ChromecastDashboardModule from '../store/modules/ChromecastDashboards';
 import ChromecastDashboard from '../model/ChromecastDashboard';
 import DashboardCollection from '../model/DashboardCollection';
 
@@ -45,7 +48,7 @@ export default class EditDashboard extends Vue {
   }
 
   get chromeCastDashboards(): ChromecastDashboard[] {
-    return DashboardCollectionsModule.chromecastDashboards.filter(
+    return ChromecastDashboardModule.chromecastDashboards.filter(
       (chromecastDashboard: ChromecastDashboard) =>
         chromecastDashboard.getDashboardCollectionId() ==
         this.dashboardCollectionId
@@ -57,6 +60,18 @@ export default class EditDashboard extends Vue {
       (chromecastDashboard: ChromecastDashboard) =>
         chromecastDashboard.getId() == this.chromeCastDashboardId
     )[0];
+  }
+
+  updateChromeCastDashboard() {
+    ChromecastDashboardModule.updateChromeCastDashboard(
+      this.chromeCastDashboard
+    );
+  }
+
+  deleteChromeCastDashboard() {
+    ChromecastDashboardModule.removeChromeCastDashboard(
+      this.chromeCastDashboard
+    );
   }
 }
 </script>

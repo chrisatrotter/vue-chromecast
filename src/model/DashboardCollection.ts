@@ -1,10 +1,10 @@
 import { uid } from 'quasar';
 
 export default class DashboardCollection {
-  private id: string;
-  private name: string;
-  private display: boolean;
-  private chromecastDashboards: string[];
+  public id: string;
+  public name: string;
+  public display: boolean;
+  public chromecastDashboards: string[];
 
   public constructor(dashboard?: DashboardCollection) {
     dashboard ? this.setDashboardCollection(dashboard) : this.setDefault();

@@ -13,7 +13,7 @@
           flat
           dense
           round
-          @click="this.toggleIsEditing()"
+          @click="toggleIsEditing()"
           icon="keyboard_arrow_left"
         />
         <q-btn
@@ -22,7 +22,7 @@
           flat
           dense
           round
-          @click="this.toggleIsEditing()"
+          @click="toggleIsEditing()"
           icon="keyboard_arrow_down"
         />
       </div>
@@ -34,6 +34,7 @@
 import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
 import DashboardCollectionsModule from '../store/modules/DashboardCollections';
+import ChromecastDashboardModule from '../store/modules/ChromecastDashboards';
 import DashboardCollection from '../model/DashboardCollection';
 import ChromecastDashboard from '../model/ChromecastDashboard';
 
@@ -53,7 +54,7 @@ export default class DashboardItem extends Vue {
   }
 
   get chromeCastDashboards(): ChromecastDashboard[] {
-    return DashboardCollectionsModule.chromecastDashboards.filter(
+    return ChromecastDashboardModule.chromecastDashboards.filter(
       (chromecastDashboard: ChromecastDashboard) =>
         chromecastDashboard.getDashboardCollectionId() ==
         this.dashboardCollectionId
@@ -65,6 +66,10 @@ export default class DashboardItem extends Vue {
       (chromecastDashboard: ChromecastDashboard) =>
         chromecastDashboard.getId() == this.chromeCastDashboardId
     )[0];
+  }
+
+  toggleIsEditing() {
+    ChromecastDashboardModule.toggleIsEditing(this.chromeCastDashboard);
   }
 }
 </script>

@@ -21,6 +21,7 @@ import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import SenderDashboard from './SenderDashboard.vue';
 import DashboardCollectionsModule from '../store/modules/DashboardCollections';
+import ChromecastDashboardModule from '../store/modules/ChromecastDashboards';
 import DashboardCollection from '../model/DashboardCollection';
 
 @Component({
@@ -29,7 +30,7 @@ import DashboardCollection from '../model/DashboardCollection';
 export default class ListOfDashboard extends Vue {
   public async created() {
     await DashboardCollectionsModule.loadDashboardCollections();
-    await DashboardCollectionsModule.loadChromecastDashboards();
+    await ChromecastDashboardModule.loadChromecastDashboards();
   }
 
   get dashboardCollections(): DashboardCollection[] {

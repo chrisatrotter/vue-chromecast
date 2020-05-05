@@ -33,13 +33,13 @@ export default {
   },
   putDashboardCollection(dashboardCollection: DashboardCollection) {
     return apiClient.put(
-      `${dashboardCollections}/${dashboardCollection.getId}`,
+      `${dashboardCollections}/${dashboardCollection.id}`,
       dashboardCollection
     );
   },
   putChromecastDashboard(chromecastDashboard: ChromecastDashboard) {
     return apiClient.put(
-      `${chromecastDashboards}/${chromecastDashboard.getId}`,
+      `${chromecastDashboards}/${chromecastDashboard.id}`,
       chromecastDashboard
     );
   },

@@ -44,6 +44,7 @@ import { Component, Prop } from 'vue-property-decorator';
 import DashboardItem from './DashboardItem.vue';
 import EditDashboard from './EditDashboard.vue';
 import DashboardCollectionsModule from '../store/modules/DashboardCollections';
+import ChromecastDashboardModule from '../store/modules/ChromecastDashboards';
 import DashboardCollection from '../model/DashboardCollection';
 import ChromecastDashboard from '../model/ChromecastDashboard';
 
@@ -62,7 +63,7 @@ export default class SenderDashboard extends Vue {
   }
 
   get chromeCastDashboards(): ChromecastDashboard[] {
-    return DashboardCollectionsModule.chromecastDashboards.filter(
+    return ChromecastDashboardModule.chromecastDashboards.filter(
       (chromecastDashboard: ChromecastDashboard) =>
         chromecastDashboard.getDashboardCollectionId() ==
         this.dashboardCollectionId
@@ -70,7 +71,7 @@ export default class SenderDashboard extends Vue {
   }
 
   addChromeCastDashboard() {
-    DashboardCollectionsModule.addChromeCastDashboard(
+    ChromecastDashboardModule.addChromeCastDashboard(
       new ChromecastDashboard(this.dashboardCollectionId)
     );
   }

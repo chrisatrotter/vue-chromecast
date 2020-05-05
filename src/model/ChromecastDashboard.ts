@@ -1,17 +1,18 @@
 import { uid } from 'quasar';
 
+/*change back all public variables to private again later*/
 export default class ChromecastDashboard {
-  private id: string;
-  private name: string;
-  private dashboardCollectionId: string;
-  private show: boolean;
-  private interval: number;
-  private intervalOptions: number[];
-  private url: string;
-  private licenseurl: string;
-  private drm: string;
-  private drmOptions: string[];
-  private isEditing: boolean;
+  public id: string;
+  public name: string;
+  public dashboardCollectionId: string;
+  public show: boolean;
+  public interval: number;
+  public intervalOptions: number[];
+  public url: string;
+  public licenseurl: string;
+  public drm: string;
+  public drmOptions: string[];
+  public isEditing: boolean;
 
   public constructor(
     dashboardCollectionId: string,
@@ -45,12 +46,17 @@ export default class ChromecastDashboard {
     this.name = chromecastDashboard.name;
     this.show = chromecastDashboard.show;
     this.interval = chromecastDashboard.interval;
-    this.intervalOptions = chromecastDashboard.intervalOptions;
+    this.intervalOptions = chromecastDashboard.intervalOptions || [
+      30,
+      60,
+      90,
+      120
+    ];
     this.url = chromecastDashboard.url;
     this.licenseurl = chromecastDashboard.licenseurl;
     this.drm = chromecastDashboard.drm;
     this.drmOptions = chromecastDashboard.drmOptions;
-    this.isEditing = chromecastDashboard.isEditing;
+    this.isEditing = chromecastDashboard.isEditing || false;
   }
 
   public getId(): string {
