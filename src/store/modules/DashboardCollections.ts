@@ -49,9 +49,7 @@ class DashboardCollectionModule extends VuexModule {
   @Action
   public async removeDashboardCollection(dashboard: DashboardCollection) {
     await DashboardService.deleteDashboardCollection(dashboard.id);
-
     this.REMOVE_DASHBOARD_COLLECTION(dashboard);
-    this.ADD_DASHBOARD_COLLECTION(dashboard);
   }
 
   @Action

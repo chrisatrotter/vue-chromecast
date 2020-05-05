@@ -39,14 +39,4 @@ export default class DashboardCollection {
   public getChromecastDashboard() {
     return this.chromecastDashboards;
   }
-
-  public addChromecastDashboard(dashboard: string) {
-    this.chromecastDashboards.push(dashboard);
-  }
-
-  public removeChromecastDashboard(dashboard: string) {
-    this.chromecastDashboards = this.chromecastDashboards.filter(
-      (chromedashboard: string) => dashboard != chromedashboard
-    );
-  }
 }

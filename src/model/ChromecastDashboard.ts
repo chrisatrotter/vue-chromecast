@@ -137,14 +137,6 @@ export default class ChromecastDashboard {
     return this.drmOptions;
   }
 
-  public addDrmOptions(drmOption: string) {
-    this.drmOptions.push(drmOption);
-  }
-
-  public removeDrmOptions(drmOption: string) {
-    this.drmOptions = this.drmOptions.filter((drm: string) => drm != drmOption);
-  }
-
   public getIsEditing(): boolean {
     return this.isEditing;
   }

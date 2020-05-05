@@ -26,6 +26,12 @@
         "501e76e1-7e6f-b923-3e84-4e946bff31a7",
         "5237ae1-7e6f-b923-3e84-4e946bff31a9"
       ]
+    },
+    {
+      "id": "d485e98c-764a-4bf3-9ff9-bb5646070083",
+      "name": "A dashboard",
+      "display": false,
+      "chromecastDashboards": []
     }
   ],
   "chromeCastDashboards": [
@@ -96,7 +102,12 @@
       "name": "Marius' calendar",
       "show": false,
       "interval": 120,
-      "intervalOptions": [30, 60, 90, 120],
+      "intervalOptions": [
+        30,
+        60,
+        90,
+        120
+      ],
       "url": "http://marius-calendar.com",
       "licenseurl": "https://widevine-proxy.appspot.com/proxy",
       "drm": "widewine",
