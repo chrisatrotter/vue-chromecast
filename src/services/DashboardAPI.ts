@@ -1,6 +1,7 @@
 import axios, { AxiosPromise } from 'axios';
 import ChromecastDashboard from 'src/model/ChromecastDashboard';
 import DashboardCollection from 'src/model/DashboardCollection';
+import Chromecast from 'src/model/Chromecast';
 
 const apiClient = axios.create({
   baseURL: 'http://localhost:3000',
@@ -11,10 +12,15 @@ const apiClient = axios.create({
   }
 });
 
+const chromecastEndpoint = '/chromecast';
 const dashboardCollections = '/dashboardCollections';
 const chromecastDashboards = '/chromecastDashboards';
 
 export default {
+  getChromecast(): AxiosPromise<Chromecast> {
+    return apiClient.get(chromecastEndpoint);
+  },
+
   getDashboardCollections(): AxiosPromise<DashboardCollection[]> {
     return apiClient.get(dashboardCollections);
   },
@@ -30,6 +36,9 @@ export default {
     chromecastDashboardId: string
   ): AxiosPromise<ChromecastDashboard> {
     return apiClient.get(`${chromecastDashboards}/${chromecastDashboardId}`);
+  },
+  putChromecast(chromecast: Chromecast) {
+    return apiClient.put(`${chromecastEndpoint}/${chromecast.applicationId}`);
   },
   putDashboardCollection(dashboardCollection: DashboardCollection) {
     return apiClient.put(

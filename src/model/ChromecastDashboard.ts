@@ -7,11 +7,9 @@ export default class ChromecastDashboard {
   public dashboardCollectionId: string;
   public show: boolean;
   public interval: number;
-  public intervalOptions: number[];
   public url: string;
   public licenseurl: string;
   public drm: string;
-  public drmOptions: string[];
   public isEditing: boolean;
 
   public constructor(
@@ -19,7 +17,7 @@ export default class ChromecastDashboard {
     chromecastDashboard?: ChromecastDashboard
   ) {
     chromecastDashboard
-      ? this.setChromeDashboard(chromecastDashboard, dashboardCollectionId)
+      ? this.setChromecastDashboard(chromecastDashboard, dashboardCollectionId)
       : this.setDefault(dashboardCollectionId);
   }
 
@@ -29,15 +27,13 @@ export default class ChromecastDashboard {
     this.name = '';
     this.show = false;
     this.interval = 120;
-    this.intervalOptions = [30, 60, 90, 120];
     this.url = '';
     this.licenseurl = '';
     this.drm = '';
-    this.drmOptions = [];
     this.isEditing = false;
   }
 
-  private setChromeDashboard(
+  private setChromecastDashboard(
     chromecastDashboard: ChromecastDashboard,
     dashboardCollectionId: string
   ) {
@@ -46,16 +42,9 @@ export default class ChromecastDashboard {
     this.name = chromecastDashboard.name;
     this.show = chromecastDashboard.show;
     this.interval = chromecastDashboard.interval;
-    this.intervalOptions = chromecastDashboard.intervalOptions || [
-      30,
-      60,
-      90,
-      120
-    ];
     this.url = chromecastDashboard.url;
     this.licenseurl = chromecastDashboard.licenseurl;
     this.drm = chromecastDashboard.drm;
-    this.drmOptions = chromecastDashboard.drmOptions;
     this.isEditing = chromecastDashboard.isEditing || false;
   }
 
@@ -95,20 +84,6 @@ export default class ChromecastDashboard {
     this.interval = interval;
   }
 
-  public getIntervalOptions(): number[] {
-    return this.intervalOptions;
-  }
-
-  public addIntervalOptions(intervalOption: number) {
-    this.intervalOptions.push(intervalOption);
-  }
-
-  public removeIntervalOptions(intervalOption: number) {
-    this.intervalOptions = this.intervalOptions.filter(
-      (interval: number) => intervalOption != interval
-    );
-  }
-
   public getUrl(): string {
     return this.url;
   }
@@ -131,10 +106,6 @@ export default class ChromecastDashboard {
 
   public setDrm(drm: string) {
     this.drm = drm;
-  }
-
-  public getDrmOptions(): string[] {
-    return this.drmOptions;
   }
 
   public getIsEditing(): boolean {

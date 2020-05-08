@@ -7,14 +7,19 @@
         <q-select
           outlined
           v-model="chromeCastDashboard.interval"
-          :options="chromeCastDashboard.intervalOptions"
+          :options="chromecast.intervalOptions"
           label="Interval (seconds)"
         />
-        <q-input outlined v-model="chromeCastDashboard.licenseurl" label="LicenseURL" />
+        <q-select
+          outlined
+          v-model="chromeCastDashboard.licenseurl"
+          :options="chromecast.licenseUrlOptions"
+          label="LicenseURL"
+        />
         <q-select
           outlined
           v-model="chromeCastDashboard.drm"
-          :options="chromeCastDashboard.drmOptions"
+          :options="chromecast.drmOptions"
           label="DRM"
         />
         <q-btn color="secondary" @click="updateChromeCastDashboard()" label="Update" />
@@ -29,8 +34,10 @@ import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
 import DashboardCollectionsModule from '../store/modules/DashboardCollections';
 import ChromecastDashboardModule from '../store/modules/ChromecastDashboards';
+import ChromecastModule from '../store/modules/Chromecast';
 import ChromecastDashboard from '../model/ChromecastDashboard';
 import DashboardCollection from '../model/DashboardCollection';
+import Chromecast from '../model/Chromecast';
 
 @Component({})
 export default class EditDashboard extends Vue {
@@ -58,8 +65,12 @@ export default class EditDashboard extends Vue {
   get chromeCastDashboard(): ChromecastDashboard {
     return this.chromeCastDashboards.filter(
       (chromecastDashboard: ChromecastDashboard) =>
-        chromecastDashboard.getId() == this.chromeCastDashboardId
+        chromecastDashboard.id == this.chromeCastDashboardId
     )[0];
+  }
+
+  get chromecast(): Chromecast {
+    return ChromecastModule.chromecast;
   }
 
   updateChromeCastDashboard() {

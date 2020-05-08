@@ -1,4 +1,10 @@
 {
+  "chromecast": {
+    "applicationId": ["A55EBA47", "B24212A8"],
+    "intervalOptions": [30, 60, 90, 120, 240],
+    "licenseUrlOptions": ["https://widevine-proxy.appspot.com/proxy"],
+    "drmOptions": ["widevine"]
+  },
   "dashboardCollections": [
     {
       "id": "501e7ae1-7e6f-ht23-3e84-4e946bas31a2",
