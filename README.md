@@ -12,6 +12,11 @@ yarn
 quasar dev
 ```
 
+### Run DB to show demo dashboards
+```bash
+json-server --watch db.json
+```
+
 ### Lint the files
 ```bash
 yarn run lint
