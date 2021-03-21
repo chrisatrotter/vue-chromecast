@@ -14,7 +14,7 @@ quasar dev
 
 ### Run DB to show demo dashboards
 ```bash
-json-server --watch db.json
+json-server --watch ./resources/dashboards.json
 ```
 
 ### Lint the files
